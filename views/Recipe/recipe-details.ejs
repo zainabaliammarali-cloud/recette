@@ -7,7 +7,8 @@
 </head>
 <body>
     <h1>Recipe Details</h1>
-    <img src="/uploada/<%= recipe.imageUrl %>" alt="<%= recipe.title %>"> // if i want to upload pic i must to use this and in the router .find
+    <img src="<%= recipe.imageUrl %>" alt="<%= recipe.title %>">
+     <!-- // if i want to upload pic i must to use this and in the router .find -->
     <p>Title: <%= recipe.title %></p>
     <p>Description: <%= recipe.description %></p>
     <p>Cuisine: <%= recipe.cuisine %></p>
@@ -20,6 +21,16 @@
     </form>
     <form action="/recipe/<%=recipe._id%>/recipeDetails/edit" method="get">
         <button>Edit Recipe</button>
+    </form>
+
+    <form action="/recipe/<%= recipe._id %>/favorite" method="post">
+        <% if(isFavorited){ %>
+        <button>Unfavorite Recipe</button>
+
+        <%}else{ %>
+        <button>Favorite Recipe</button>
+
+        <% } %>
     </form>
 </body>
 </html>

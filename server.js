@@ -1,4 +1,3 @@
-server.js
 // imports
 const express = require("express") //importing express package
 const app = express() // creates a express application

@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const multer = require("multer")
 const Recipe = require('../models/Recipe')
+const Favorite = require("../models/favourite")
 const upload = multer({ des: 'uploads' })
 
 
@@ -33,7 +34,11 @@ router.post('/newRecipe', upload.single('imageUrl'), async (req, res) => {
 router.get('/:id/recipeDetails', async (req, res) => {
   try {
     const foundRecipe = await Recipe.findById(req.params.id).populate('author')
-    res.render('Recipe/recipe-details.ejs', { recipe: foundRecipe })
+    const isFavorited = await Favorite.findOne({
+      user: req.session.user._id,
+      recipe: req.params.id
+    })
+    res.render('Recipe/recipe-details.ejs', { recipe: foundRecipe, isFavorited })
   } catch (err) {
     console.log(err)
   }
@@ -70,6 +75,36 @@ router.put('/:id/recipeDetails/edit', upload.single('imageUrl'), async (req, res
     res.redirect('/recipe/allRecipes')
   }
   catch (err) {
+    console.log(err)
+  }
+})
+
+
+
+router.post('/:id/favorite', async(req,res)=>{
+  try{
+    const foundFavorite = await Favorite.findOne({
+      user: req.session.user._id,
+      recipe: req.params.id
+    })
+
+    if(foundFavorite){
+      const deletedFavorite = await Favorite.deleteOne({
+      user: req.session.user._id,
+      recipe: req.params.id
+    })
+    }
+    else{
+    const favoriteCreate = await Favorite.create({
+      user: req.session.user._id,
+      recipe: req.params.id
+    })
+
+    }
+
+    res.redirect(`/recipe/${req.params.id}/recipeDetails`)
+  }
+  catch(err){
     console.log(err)
   }
 })
