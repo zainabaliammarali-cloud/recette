@@ -15,6 +15,8 @@ const passUserToView = require("./middleware/pass-user-to-view.js");
 // controller Imports
 const authController = require("./controllers/auth.controllers.js");
 const indexController = require("./controllers/index.controllers.js");
+const recipeController = require("./controllers/recipe.controller.js")
+const favoritsController = require('./controllers/favorites.controller.js')
 
 
 // Middleware
@@ -56,6 +58,8 @@ app.use(passUserToView)
 // Routes go here
 app.use('/auth',authController)
 app.use('/',indexController)
+app.use('/recipe', recipeController)
+app.use('/favorits', favoritsController)
 
 
 

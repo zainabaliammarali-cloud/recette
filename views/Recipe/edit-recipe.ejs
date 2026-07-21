@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+</head>
+<body>
+    <h1>Edit Recipe</h1>
+    <form action="/recipe/<%=recipe._id%>/recipeDetails/edit?_method=PUT" method="post">
+        <label for="title">Title:</label>
+        <input value="<%= recipe.title %>" name="title" id="title" type="text">
+        <label for="description">Description:</label>
+        <input value="<%= recipe.description %>" name="description" id="description" type="text">
+        <label for="cuisine">Cuisine:</label>
+        <input value="<%= recipe.cuisine %>" name="cuisine" id="cuisine" type="text">
+        <label for="difficulty">Difficulty:</label>
+        <input value="<%= recipe.difficulty %>" name="difficulty" id="difficulty" type="text">
+        <label for="prepTime">Prep Time:</label>
+        <input value="<%= recipe.prepTime %>" name="prepTime" id="prepTime" type="number">
+        <label for="cookTime">Cook Time:</label>
+        <input value="<%= recipe.cookTime %>" name="cookTime" id="cookTime" type="number">
+        <label for="servings">Servings:</label>
+        <input value="<%= recipe.servings %>" name="servings" id="servings" type="number">
+        <label for="imageUrl">Image URL:</label>
+        <input value="<%= recipe.imageUrl %>" name="imageUrl" id="imageUrl" type="text">
+        <button type="submit">Edit Recipe</button>
+    </form>
+</body>
+</html>

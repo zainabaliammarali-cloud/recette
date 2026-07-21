@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Details</title>
+</head>
+<body>
+    <h1>Recipe Details</h1>
+    <img src="/uploada/<%= recipe.imageUrl %>" alt="<%= recipe.title %>">
+    <p>Title: <%= recipe.title %></p>
+    <p>Description: <%= recipe.description %></p>
+    <p>Cuisine: <%= recipe.cuisine %></p>
+    <p>Difficulty: <%= recipe.difficulty %></p>
+    <p>Prep Time: <%= recipe.prepTime %></p>
+    <p>Cook Time: <%= recipe.cookTime %></p>
+    <p>Servings: <%= recipe.servings %></p>
+    <form action="/recipe/<%=recipe._id%>/recipeDetails?_method=DELETE" method="post">
+        <button>Delete Recipe</button>
+    </form>
+    <form action="/recipe/<%=recipe._id%>/recipeDetails/edit" method="get">
+        <button>Edit Recipe</button>
+    </form>
+</body>
+</html>
