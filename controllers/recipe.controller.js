@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const multer = require("multer")
 const Recipe = require('../models/Recipe')
-
+const upload = multer({ des: 'uploads' })
 
 
 router.get('/allRecipes', async (req, res) => {
