@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Recipes</title>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <h1>All Recipes</h1>
+    <% for(let oneRecipe of recipes){ %>
+        <p><%= oneRecipe.title %></p>
+        <a href="/recipe/<%=oneRecipe._id%>/recipeDetails">Show Recipe Details</a>
+    <% } %>
+</body>
+</html>
