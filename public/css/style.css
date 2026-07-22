@@ -62,6 +62,8 @@ section {
   border-radius: 8px;
   border-left: 5px solid #9fa764;
   box-shadow: 0 2px 8px rgba(48, 43, 26, 0.1);
+  width: 60%;
+  margin: 0 auto;
 }
 
 section h1, section h2, section h3 {
@@ -177,6 +179,8 @@ button:hover {
   padding: 15px;
   border-radius: 8px;
   margin-top: 20px;
+  width: 60%;
+  margin: 0 auto;
 }
 
 .daily-notes h3 {
