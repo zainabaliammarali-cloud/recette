@@ -1,36 +1,87 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Details</title>
+    <title>Recipe Details - recette</title>
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-    <h1>Recipe Details</h1>
-    <img src="<%= recipe.imageUrl %>" alt="<%= recipe.title %>">
-     <!-- // if i want to upload pic i must to use this and in the router .find -->
-    <p>Title: <%= recipe.title %></p>
-    <p>Description: <%= recipe.description %></p>
-    <p>Cuisine: <%= recipe.cuisine %></p>
-    <p>Difficulty: <%= recipe.difficulty %></p>
-    <p>Prep Time: <%= recipe.prepTime %></p>
-    <p>Cook Time: <%= recipe.cookTime %></p>
-    <p>Servings: <%= recipe.servings %></p>
-    <form action="/recipe/<%=recipe._id%>/recipeDetails?_method=DELETE" method="post">
-        <button>Delete Recipe</button>
-    </form>
-    <form action="/recipe/<%=recipe._id%>/recipeDetails/edit" method="get">
-        <button>Edit Recipe</button>
-    </form>
+    <header>
+      <h1>recette</h1>
+    </header>
 
-    <form action="/recipe/<%= recipe._id %>/favorite" method="post">
-        <% if(isFavorited){ %>
-        <button>Unfavorite Recipe</button>
+    <%- include('../partials/navbar') %>
 
-        <%}else{ %>
-        <button>Favorite Recipe</button>
+    <main>
+      <section class="recipe-details">
+        <h1><%= recipe.title %></h1>
+        <img src="<%= recipe.imageUrl %>" alt="<%= recipe.title %>">
+        <!-- // if i want to upload pic i must to use this + the router .find -->
+        
+        <p><strong>Title:</strong> <%= recipe.title %></p>
+        <p><strong>Description:</strong> <%= recipe.description %></p>
+        <p><strong>Cuisine:</strong> <%= recipe.cuisine %></p>
+        <p><strong>Difficulty:</strong> <%= recipe.difficulty %></p>
+        <p><strong>Prep Time:</strong> <%= recipe.prepTime %> minutes</p>
+        <p><strong>Cook Time:</strong> <%= recipe.cookTime %> minutes</p>
+        <p><strong>Servings:</strong> <%= recipe.servings %></p>
 
-        <% } %>
-    </form>
+        <div class="button-group">
+          <form action="/recipe/<%=recipe._id%>/recipeDetails?_method=DELETE" method="post">
+            <button type="submit" class="button-secondary">Delete Recipe</button>
+          </form>
+          <form action="/recipe/<%=recipe._id%>/recipeDetails/edit" method="get">
+            <button>Edit Recipe</button>
+          </form>
+
+          <form action="/recipe/<%= recipe._id %>/favorite" method="post">
+            <% if(isFavorited){ %>
+              <button type="submit" class="button-secondary">Unfavorite Recipe</button>
+            <%}else{ %>
+              <button type="submit">Favorite Recipe</button>
+            <% } %>
+          </form>
+        </div>
+
+        <p><strong><%= favoriteCount %> People favorited this recipe</strong></p>
+      </section>
+
+      <section class="review-section">
+        <h2>Reviews</h2>
+
+        <form action="/recipe/<%= recipe._id %>/review" method="post">
+            <label for="ratings">Rating (1-5):</label>
+            <input name="ratings" id="ratings" type="number" min="1" max="5" required>
+
+            <label for="comment">Comment:</label>
+            <textarea name="comment" id="comment" rows="10" cols="50" required></textarea>
+
+            <button type="submit">Add Review</button>
+        </form>
+
+        <div>
+          <% reviews.forEach(review => { %>
+            <div class="review-item">
+              <p><strong><%= review.author.username %></strong></p>
+              <p>Rating: <%= review.ratings %>/5</p>
+              <p>Comment: <%= review.comments %></p>
+            </div>
+          <% }); %>
+        </div>
+      </section>
+
+      <section class="daily-notes">
+        <h3>My Cooking Notes</h3>
+        <p>Add your daily notes about cooking this recipe here:</p>
+        <textarea class="notes-input" placeholder="Write your notes... (tips, modifications, experiences)"></textarea>
+        <button type="button">Save Note</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 recette. All rights reserved.</p>
+    </footer>
 </body>
 </html>

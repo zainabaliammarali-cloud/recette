@@ -1,31 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Recipe</title>
+    <title>Create Recipe - recette</title>
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+    <header>
+      <h1>recette</h1>
+    </header>
+
     <%- include('../partials/navbar') %>
-    <h1>Create Recipe</h1>
-    <form action="/recipe/newRecipe" method="post">
-        <label for="title">Title:</label>
-        <input name="title" id="title" type="text">
-        <label for="description">Description:</label>
-        <input name="description" id="description" type="text">
-        <label for="cuisine">Cuisine:</label>
-        <input name="cuisine" id="cuisine" type="text">
-        <label for="difficulty">Difficulty:</label>
-        <input name="difficulty" id="difficulty" type="text">
-        <label for="prepTime">Prep Time:</label>
-        <input name="prepTime" id="prepTime" type="number">
-        <label for="cookTime">Cook Time:</label>
-        <input name="cookTime" id="cookTime" type="number">
-        <label for="servings">Servings:</label>
-        <input name="servings" id="servings" type="number">
-        <label for="imageUrl">Image URL:</label>
-        <input name="imageUrl" id="imageUrl" type="text">
-        <button type="submit">Create Recipe</button>
-    </form>
+
+    <main>
+      <section>
+        <h1>Create Recipe</h1>
+        <form action="/recipe/newRecipe" method="post">
+            <label for="title">Title:</label>
+            <input name="title" id="title" type="text" required>
+            <label for="description">Description:</label>
+            <input name="description" id="description" type="text" required>
+            <label for="cuisine">Cuisine:</label>
+            <input name="cuisine" id="cuisine" type="text" required>
+            <label for="difficulty">Difficulty:</label>
+            <input name="difficulty" id="difficulty" type="text" required>
+            <label for="prepTime">Prep Time:</label>
+            <input name="prepTime" id="prepTime" type="number" required>
+            <label for="cookTime">Cook Time:</label>
+            <input name="cookTime" id="cookTime" type="number" required>
+            <label for="servings">Servings:</label>
+            <input name="servings" id="servings" type="number" required>
+            <label for="imageUrl">Image URL:</label>
+            <input name="imageUrl" id="imageUrl" type="text" required>
+            <button type="submit">Create Recipe</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 recette. All rights reserved.</p>
+    </footer>
 </body>
 </html>

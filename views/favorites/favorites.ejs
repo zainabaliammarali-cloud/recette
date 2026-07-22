@@ -1,26 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Favorites</title>
+    <title>My Favorites - recette</title>
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+    <header>
+      <h1>recette</h1>
+    </header>
+
     <%- include('../partials/navbar') %>
-    <h1>My Favorite Recipes</h1>
-    <% if(favorites.length > 0) { %>
-        <% for(let oneFavorite of favorites){ %>
-            <div>
-                <h3><%= oneFavorite.recipe.title %></h3>
-                <p>Cuisine: <%= oneFavorite.recipe.cuisine %></p>
-                <a href="/recipe/<%=oneFavorite.recipe._id%>">View Details</a>
-                <form action="/favorites/<%=oneFavorite.recipe._id%>/removeFavorite?_method=DELETE" method="post">
-                    <button type="submit">Remove</button>
-                </form>
-            </div>
+
+    <main>
+      <section>
+        <h1>My Favorite Recipes</h1>
+        <% if(favorites.length > 0) { %>
+            <% for(let oneFavorite of favorites){ %>
+                <div class="recipe-card">
+                    <h3><%= oneFavorite.recipe.title %></h3>
+                    <p>Cuisine: <%= oneFavorite.recipe.cuisine %></p>
+                    <a href="/recipe/<%=oneFavorite.recipe._id%>">View Details</a>
+                    <form action="/favorites/<%=oneFavorite.recipe._id%>/removeFavorite?_method=DELETE" method="post">
+                        <button type="submit" class="button-secondary">Remove</button>
+                    </form>
+                </div>
+            <% } %>
+        <% } else { %>
+            <p>No favorites yet!</p>
         <% } %>
-    <% } else { %>
-        <p>No favorites yet!</p>
-    <% } %>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 recette. All rights reserved.</p>
+    </footer>
 </body>
 </html>

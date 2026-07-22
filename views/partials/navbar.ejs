@@ -1,17 +1,13 @@
 
 <nav>
-
-    <a href="/">Homepage</a>
-    <% if (user){ %>
-        <a href="/auth/sign-out">Logout</a>
-        <a href="/recipe/newRecipe">Create Recipe</a>
-        <a href="/favorits">Favorite Recipes</a>
-
-        <% } else{ %>
-            <a href="/auth/sign-up">Sign up</a>
-            <a href="/auth/sign-in">Login</a>
-            <% } %>
-            <a href="/recipe/allRecipes">All Recipes</a>
-
-
+  <a href="/">Homepage</a>
+  <% if (user){ %>
+    <a href="/auth/sign-out">Logout</a>
+    <a href="/recipe/newRecipe">Create Recipe</a>
+    <a href="/favorits">Favorite Recipes</a>
+  <% } else{ %>
+    <a href="/auth/sign-up">Sign up</a>
+    <a href="/auth/sign-in">Login</a>
+  <% } %>
+  <a href="/recipe/allRecipes">All Recipes</a>
 </nav>

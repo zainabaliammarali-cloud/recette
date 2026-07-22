@@ -1,0 +1,227 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #d9d8d0;
+  color: #302b1a;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #613c4e;
+  padding: 20px 0;
+  box-shadow: 0 2px 5px rgba(48, 43, 26, 0.2);
+  margin-bottom: 20px;
+}
+
+header h1 {
+  text-align: center;
+  color: #d9d8d0;
+  font-size: 2.5rem;
+}
+
+nav {
+  background-color: #816a60;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 5px rgba(48, 43, 26, 0.15);
+}
+
+nav a {
+  color: #d9d8d0;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #9fa764;
+  color: #302b1a;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+section {
+  background-color: #f5f4f0;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border-left: 5px solid #9fa764;
+  box-shadow: 0 2px 8px rgba(48, 43, 26, 0.1);
+}
+
+section h1, section h2, section h3 {
+  color: #613c4e;
+  margin-bottom: 15px;
+}
+
+footer {
+  background-color: #302b1a;
+  color: #d9d8d0;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  color: #613c4e;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+textarea,
+input[type="email"] {
+  padding: 10px;
+  border: 2px solid #9fa764;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #302b1a;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-color: #613c4e;
+  box-shadow: 0 0 5px rgba(97, 60, 78, 0.3);
+}
+
+button {
+  padding: 12px 20px;
+  background-color: #9fa764;
+  color: #302b1a;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #613c4e;
+  color: #d9d8d0;
+}
+
+.recipe-card {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border-bottom: 3px solid #9fa764;
+  transition: transform 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(48, 43, 26, 0.2);
+}
+
+.recipe-card h3 {
+  color: #613c4e;
+}
+
+.recipe-card p {
+  color: #816a60;
+  margin: 8px 0;
+}
+
+.recipe-card a {
+  color: #9fa764;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 15px;
+}
+
+.recipe-card a:hover {
+  color: #613c4e;
+}
+
+.recipe-details img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(48, 43, 26, 0.2);
+}
+
+.daily-notes {
+  background-color: #9fa764;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.daily-notes h3 {
+  color: #302b1a;
+}
+
+.notes-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #816a60;
+  border-radius: 4px;
+  background-color: #f5f4f0;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.button-group button {
+  flex: 1;
+  min-width: 120px;
+}
+
+.button-secondary {
+  background-color: #816a60;
+  color: #d9d8d0;
+}
+
+.button-secondary:hover {
+  background-color: #613c4e;
+}
+
+.review-section {
+  background-color: #f5f4f0;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
+.review-item {
+  background-color: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-left: 3px solid #9fa764;
+}

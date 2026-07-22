@@ -2,13 +2,19 @@ const router = require("express").Router()
 const multer = require("multer")
 const Recipe = require('../models/Recipe')
 const Favorite = require("../models/favourite")
+const Review = require("../models/Review")
 const upload = multer({ des: 'uploads' })
 
 
 router.get('/allRecipes', async (req, res) => {
   try {
     const allRecipes = await Recipe.find().populate('author')
-    res.render('Recipe/all-recipes.ejs', { recipes: allRecipes })
+        const isFavorited = await Favorite.findOne({
+      user: req.session.user._id,
+      recipe: req.params.id
+    })
+
+    res.render('Recipe/all-recipes.ejs', { recipes: allRecipes, isFavorited })
   } catch (err) {
     console.log(err)
   }
@@ -38,7 +44,13 @@ router.get('/:id/recipeDetails', async (req, res) => {
       user: req.session.user._id,
       recipe: req.params.id
     })
-    res.render('Recipe/recipe-details.ejs', { recipe: foundRecipe, isFavorited })
+    const favoriteCount = await Favorite.find({
+      recipe: req.params.id
+    }).countDocuments()
+
+    const allReviews = await Review.find({recipe:req.params.id}).populate('author')
+    console.log(allReviews)
+    res.render('Recipe/recipe-details.ejs', { recipe: foundRecipe, isFavorited,  favoriteCount, reviews: allReviews})
   } catch (err) {
     console.log(err)
   }
@@ -107,6 +119,23 @@ router.post('/:id/favorite', async(req,res)=>{
   catch(err){
     console.log(err)
   }
+})
+
+
+
+router.post('/:id/review', async(req,res)=>{
+  console.log(req.params.id)
+  console.log(req.session.user._id)
+  console.log(req.body)
+
+  const createdReview = await Review.create({
+    author: req.session.user._id,
+    recipe: req.params.id,
+    ratings: req.body.ratings,
+    comments: req.body.comment
+  })
+
+    res.redirect(`/recipe/${req.params.id}/recipeDetails`)
 })
 
 module.exports = router;
